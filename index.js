@@ -21,40 +21,7 @@ app.set('layout extractScripts', true);
 const nodeSass = require('node-sass');
 const fs = require('fs');
 
-// Input and output file paths
-/*const inputFilePath = './assets/sass';
-const outputFilePath = './assets/css';
 
-
-// Compile Sass to CSS
-nodeSass.render({
-  file: inputFilePath,
-  outputStyle: 'extended', // Options: 'nested', 'expanded', 'compact', 'compressed'
-}, (error, result) => {
-  if (!error) {
-    // Write the compiled CSS to the output file
-    fs.writeFileSync(outputFilePath, result.css);
-    console.log('Sass compiled successfully!');
-  } else {
-    console.error('Error compiling Sass:', error);
-  }
-});
-
-*/
-
-
-/*const sassMiddleware =require('node-sass-middleware')
-
-
-
-app.use(sassMiddleware({
-    src:'./assets/scss',
-    dest: './assets/css',
-    debug:true,
-    outputStyle:'extended',
-    prefix:'/css'
-}));
-*/
 
 app.use(express.urlencoded());
 app.use(cookieParser());
