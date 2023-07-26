@@ -26,6 +26,12 @@
 
                     <li>
                         <p>
+                            <% if (locals.user && locals.user.id==post.user.id){%>
+                                <small>
+                                    <a href="/posts/destroy/<%=post.id%>">X</a>
+                                </small>
+                            <%}%>
+                            
 
                             <%= post.content %>
                             <br>
@@ -41,8 +47,6 @@
                                     <input type="hidden" name="post" value="<%=post._id%>">
                                     <input type="submit" value="Add Comment">
                                 </form>
-                            
-                            
                             <% } %>
 
                             <div class="post-comments-list">
