@@ -25,8 +25,33 @@ module.exports.create = function(req,res){
         }
     })
     .catch((err)=>{
-        console.log(err);
+        console.log(err); 
         return res.status(500).send('Internal Server Error');
     })
 
 }
+
+module.exports.destroy=function(req,res){
+    Comment.findById(req.params.id)
+    .then((comment)=>{
+        console.log(req.params.id);
+
+        if(comment.user == req.user.id){
+            let postId=comment.post;
+           // comment.remove();
+           Comment.deleteOne({_id:req.params.id})
+           .then(()=>{
+             Post.findByIdAndUpdate(postId,{$pull:{comments:req.params.id}})
+            .then((post)=>{
+               return res.redirect('back');
+            })
+           })
+
+            
+        }
+        else{
+            return res.redirect('back');
+        }
+    })
+}
+
